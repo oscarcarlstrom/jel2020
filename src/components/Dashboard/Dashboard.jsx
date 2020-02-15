@@ -17,9 +17,9 @@ const Dashboard = ({ socket }) => {
     setData([...data, JSON.parse(event.data)])
   }
 
-  const items = data.map(d => {
+  const items = data.map((d, index) => {
     
-    return <StyledButton className="item">
+    return <StyledButton key={`${d.appId}-${index}`} className="item">
         {d.appId} : {d.data}
     </StyledButton>
   });
