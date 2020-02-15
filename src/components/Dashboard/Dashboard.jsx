@@ -24,15 +24,15 @@ const Dashboard = ({ socket }) => {
           <div className="ui pushable">
             <div className="ui inverted vertical labeled icon ui overlay left thin visible sidebar menu">
             <div className="item">Data: { data.length }</div>
-              <a className="item">
+              <div className="item">
                 ID: 1
-              </a>
-              <a className="item">
+              </div>
+              <div className="item">
                 ID: 2
-              </a>
-              <a className="item">
+              </div>
+              <div className="item">
                 ID: 3
-              </a>
+              </div>
             </div>
           </div>
         </div>
