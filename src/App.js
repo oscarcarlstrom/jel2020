@@ -12,8 +12,12 @@ const App = ({ socket }) => {
     socket.send('Client got data');
     
     const message = JSON.parse(event.data)
-    state[message.id][message.appId] = message.data
-    setData(state)
+    const newState = {
+      ...state
+    }
+    newState[message.id][message.appId] = message.data
+
+    setData(newState)
   };
   
   const sideBarItems = Object.values(data).map((device, index) => {
