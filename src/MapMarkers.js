@@ -12,7 +12,7 @@ const Line = styled.p`
 `;
 
 const MapMarker = ({ device }) => (
-  <Marker position={[59.436691, 10.594773]}>
+  <Marker position={device.location}>
     <PopContent>
       <Line>Temperatur: {device.TEMP}</Line>
       <Line>Fuktighet: {device.HUMID}</Line>
