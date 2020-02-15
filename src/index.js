@@ -11,12 +11,6 @@ socket.onopen = function(e) {
   socket.send('Client is connected')
 }
 
-socket.onmessage = function(event) {
-  console.log('event', event)
-  console.log(`[message] Data received from server: ${event.data}`)
-  socket.send('Client got data')
-}
-
 socket.onclose = function(event) {
   if (event.wasClean) {
     console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`)
@@ -29,7 +23,7 @@ socket.onclose = function(event) {
 };
 
 socket.onerror = function(error) {
-  console.eroor(`[ws] ${error.message}`)
+  console.error(`[ws] ${error.message}`)
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App socket={socket} />, document.getElementById('root'));

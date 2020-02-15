@@ -12,17 +12,16 @@ L.Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
-const StyledPopupContent = styled.div`
+const PopContent = styled(Popup)`
   padding: 12px;
-  /* background-color:  */
 `;
 
 const Map = props => {
   return (
-    <LeafletMap center={props.position} zoom={13} className="mapContainer">
+    <LeafletMap center={props.position} zoom={16} className="mapContainer">
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={props.position}>
-        <Popup><strong>A pretty CSS3 popup.</strong><br />Easily customizable.</Popup>
+        <PopContent>Hello jeløya</PopContent>
       </Marker>
     </LeafletMap>
   )
