@@ -12,11 +12,11 @@ L.Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
-const Map = ({ data }) => {
+const Map = ({ data, position }) => {
   return (
-    <LeafletMap center={[59.436691, 10.594773]} zoom={16} className="mapContainer">
+    <LeafletMap center={position} zoom={16} className="mapContainer">
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <MapMarkers data={data} />
+      <MapMarkers data={data} position={position} />
     </LeafletMap>
   )
 };

@@ -11,8 +11,8 @@ const Line = styled.p`
   margin-bottom: 8px !important;
 `;
 
-const MapMarker = ({ device }) => (
-  <Marker position={[59.436691, 10.594773]}>
+const MapMarker = ({ device, position }) => (
+  <Marker position={position}>
     <PopContent>
       <Line>Temperatur: {device.TEMP}</Line>
       <Line>Fuktighet: {device.HUMID}</Line>
@@ -22,11 +22,11 @@ const MapMarker = ({ device }) => (
   </Marker>
 );
 
-const MapMarkers = ({ data }) => {
+const MapMarkers = ({ data, position }) => {
   console.log('MapMarkers got props', data);
 
   const markers = Object.values(data).map((device, index) => (
-    <MapMarker key={`marker-${index}`} device={device} index={index} />
+    <MapMarker key={`marker-${index}`} device={device} position={position} index={index} />
   ));
   
   return (
