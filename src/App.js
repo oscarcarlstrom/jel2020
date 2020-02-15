@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { state } from './state.js'
+import { Progress } from 'semantic-ui-react'
+import { calculatePercent, state } from './state.js'
 import Map from './Map';
 import './App.css';
 
@@ -30,13 +31,15 @@ const App = ({ socket }) => {
 
     if(message.appId !== "BUTTON") {
       newState[message.id][message.appId] = message.data;
-    } else if (message.appId === "BUTTON" && message.data == 1) {
+    } else if (message.appId === "BUTTON" && message.data === 1) {
       newState[message.id][message.appId] = message.data;
       audioElement.play();
       setTimeout(() => {
         audioElement.pause();
       }, 3000);
     }
+
+    newState[message.id]['percent'] = calculatePercent(newState[message.id])
 
     setData(newState)
   };
@@ -51,9 +54,10 @@ const App = ({ socket }) => {
       href={`#${device.name}`}
       key={`${device.appId}-${index}`}
       className="item"
-      style={{padding: "1em"}}
+      style={{padding: "1em", paddingRight: "2em"}}
       onClick={() => positionClick(device.location)}>
         <div className="header">{device.name}</div>
+        <Progress percent={device.percent} indicating />
       </a>
     )
   });

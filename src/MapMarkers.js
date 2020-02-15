@@ -15,7 +15,7 @@ const Line = styled.p`
 const MapMarker = ({ device, position }) => {
   let icon = Icons.greenIcon;
 
-  if(device.BUTTON == 1) {
+  if(device.BUTTON === 1) {
     icon = Icons.redIcon;
   }
   

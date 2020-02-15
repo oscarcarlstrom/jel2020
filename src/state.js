@@ -4,8 +4,9 @@ let initialValues = {
   AIR_PRESS: 0,
   AIR_QUAL: 0,
   BUTTON: 0,
-  FLIP: "NORMAL"
-}
+  FLIP: "NORMAL",
+  percent: 100
+};
 
 export let state = {
   'prod/e58215b4-ab97-41b0-8abe-3fdf299bac4e/m/d/nrf-352656100826489/d2c': {
@@ -19,3 +20,10 @@ export let state = {
     ...initialValues
   }
 };
+
+export function calculatePercent(state) {
+  if (state.FLIP === "UPSIDE_DOWN") { return 10; }
+  if (state.BUTTON === '1') { return 50; }
+  if (state.AIR_QUAL < 100) { return state.AIR_QUAL }
+  return 100;
+}
