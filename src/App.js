@@ -1,12 +1,10 @@
 import React from 'react';
-import MyMap from './Map'
 import './App.css';
-import Dashboard from './Dashboard/Dashboard';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   return (
     <div className="App">
-      <MyMap />
       <Dashboard></Dashboard>
       <footer></footer>
     </div>
