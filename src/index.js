@@ -4,20 +4,11 @@ import './index.css';
 import '../node_modules/leaflet/dist/leaflet.css'
 import App from './App';
 
-let data = []
-
 let socket = new WebSocket('ws://10.168.77.182:1880/ws/khan')
 
 socket.onopen = function(e) {
   console.log('[open] Connection established')
   socket.send('Client is connected')
-}
-
-socket.onmessage = function(event) {
-  console.log('event', event)
-  console.log(`[message] Data received from server: ${event.data}`)
-  socket.send('Client got data')
-  data.push(event.data)
 }
 
 socket.onclose = function(event) {
@@ -35,4 +26,4 @@ socket.onerror = function(error) {
   console.eroor(`[ws] ${error.message}`)
 };
 
-ReactDOM.render(<App data={data} />, document.getElementById('root'));
+ReactDOM.render(<App socket={socket} />, document.getElementById('root'));
