@@ -7,7 +7,6 @@ const App = ({ socket }) => {
   const [data, setData] = useState(state);
 
   socket.onmessage = function(event) {
-    console.log('event', event);
     console.log(`[message] Data received from server: ${event.data}`);
     socket.send('Client got data');
     
@@ -21,7 +20,6 @@ const App = ({ socket }) => {
   };
   
   const sideBarItems = Object.values(data).map((device, index) => {
-    console.log('device', device);
     return (
       <a href={`#${device.name}`} key={`${device.appId}-${index}`} className="item" style={{padding: "1em"}}>
         <div className="header">{device.name}</div>
