@@ -8,26 +8,23 @@ const StyledDiv = styled.div`
 
 const Dashboard = props => {
     return (
-
-          <div className="ui celled grid">
-            <div className="thirteen wide column">
+          <div className="ui grid">
+            <div className="ui row">
+            <div className="thirteen wide column" style={{padding: 0}}>
               <Map position={[59.436691, 10.594773]}/>
             </div>
-              <div className="three wide column">
-                <div className="ui pushable">
-                  <div className="ui inverted vertical labeled icon ui overlay left thin visible sidebar menu">
-                    <a className="item">
-                      ID: 1
-                    </a>
-                    <a className="item">
-                      ID: 2
-                    </a>
-                    <a className="item">
-                      ID: 3
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div className="ui inverted vertical labeled ui overlay right visible sidebar menu three wide column" style={{padding: 0}}>
+              <a className="item">
+                ID: 1
+              </a>
+              <a className="item">
+                ID: 2
+              </a>
+              <a className="item">
+                ID: 3
+              </a>
+            </div>
+            </div>
           </div>
       
     );
