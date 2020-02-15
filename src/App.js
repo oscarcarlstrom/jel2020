@@ -13,8 +13,11 @@ const App = ({ socket }) => {
     const message = JSON.parse(event.data);
     const newState = {
       ...state
-    };
-    newState[message.id][message.appId] = message.data;
+    }
+
+    if(message.appId !== "BUTTON" || (message.appId === "BUTTON" && message.data == 1)) {
+      newState[message.id][message.appId] = message.data
+    }
 
     setData(newState)
   };
