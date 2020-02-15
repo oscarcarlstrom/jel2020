@@ -31,7 +31,7 @@ const App = ({ socket }) => {
 
     if(message.appId !== "BUTTON") {
       newState[message.id][message.appId] = message.data;
-    } else if (message.appId === "BUTTON" && message.data === 1) {
+    } else if (message.appId === "BUTTON" && message.data === '1') {
       newState[message.id][message.appId] = message.data;
       audioElement.play();
       setTimeout(() => {
