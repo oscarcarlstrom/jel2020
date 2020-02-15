@@ -19,11 +19,11 @@ const App = ({ socket }) => {
     };
 
     if (message.appId === "AIR_PRESS") {
-      newState[message.id].location = [newState[message.id].location[0] + 0.001, newState[message.id].location[1]];
+      newState[message.id].location = [newState[message.id].location[0] - 0.001, newState[message.id].location[1]];
       setPosition(newState[message.id].location);
     }
     else if (message.appId === "TEMP") {
-      newState[message.id].location = [newState[message.id].location[0], newState[message.id].location[1] + 0.001];
+      newState[message.id].location = [newState[message.id].location[0], newState[message.id].location[1] - 0.001];
       setPosition(newState[message.id].location);
     }
 
