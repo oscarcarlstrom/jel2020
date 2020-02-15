@@ -16,11 +16,11 @@ const MapMarker = ({ device, position }) => {
   let icon = Icons.greenIcon;
 
   if(device.BUTTON == 1) {
-    icon = Icons.yellowIcon;
+    icon = Icons.redIcon;
   }
   
   if (device.FLIP === "UPSIDE_DOWN") {
-    icon = Icons.redIcon;
+    icon = Icons.yellowIcon;
   }
   
   return (
