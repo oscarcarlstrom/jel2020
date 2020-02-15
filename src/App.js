@@ -27,7 +27,7 @@ const App = ({ socket }) => {
   const sideBarItems = Object.values(data).map((device, index) => {
     console.log('device', device)
     return (
-      <a key={`${device.appId}-${index}`} className="item" style={{padding: "1em"}}>
+      <a href={`#${device.name}`} key={`${device.appId}-${index}`} className="item" style={{padding: "1em"}}>
         <div className="header">{device.name}</div>
       </a>
     )
