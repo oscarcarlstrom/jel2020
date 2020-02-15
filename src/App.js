@@ -22,8 +22,16 @@ const App = ({ socket }) => {
       ...state
     }
 
-    if(message.appId !== "BUTTON" || (message.appId === "BUTTON" && message.data == 1)) {
-      newState[message.id][message.appId] = message.data
+    let audioElement = new Audio('alertsound.mp3');
+
+    if(message.appId !== "BUTTON") {
+      newState[message.id][message.appId] = message.data;
+    } else if (message.appId === "BUTTON" && message.data == 1) {
+      newState[message.id][message.appId] = message.data;
+      audioElement.play();
+      setTimeout(() => {
+        audioElement.pause();
+      }, 3000);
     }
 
     setData(newState)
