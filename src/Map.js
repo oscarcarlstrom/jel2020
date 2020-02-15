@@ -16,13 +16,25 @@ const PopContent = styled(Popup)`
   padding: 12px;
 `;
 
-const Map = props => {
-  return (
-    <LeafletMap center={props.position} zoom={16} className="mapContainer">
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <Marker position={props.position}>
-        <PopContent>Hello jeløya</PopContent>
+const Map = ({ data }) => {
+  const markers = Object.keys(data).map(id => {
+    const device = data[id]
+    return (
+      <Marker key={id} position={[59.436691, 10.594773]}>
+        <PopContent>
+          {device.TEMP}
+          {device.HUMID}
+          {device.AIR_PRESS}
+          {device.AIR_QUAL}
+        </PopContent>
       </Marker>
+    )
+  })
+
+  return (
+    <LeafletMap center={[59.436691, 10.594773]} zoom={16} className="mapContainer">
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      { markers }
     </LeafletMap>
   )
 }
