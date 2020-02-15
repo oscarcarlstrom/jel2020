@@ -25,7 +25,7 @@ const Dashboard = ({ socket }) => {
 
   return (
     <div className="ui grid">
-      <div className="ui row">
+      <div className="ui row" style={{paddingBottom: 0}}>
         <div className="thirteen wide column" style={{padding: 0}}>
           <Map position={[59.436691, 10.594773]}/>
         </div>
