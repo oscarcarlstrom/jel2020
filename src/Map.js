@@ -16,7 +16,7 @@ const Map = ({ data, position }) => {
   return (
     <LeafletMap center={position} zoom={16} className="mapContainer">
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <MapMarkers data={data} position={position} />
+      <MapMarkers data={data} />
     </LeafletMap>
   )
 };

@@ -15,7 +15,7 @@ export let state = {
   },
   'prod/e58215b4-ab97-41b0-8abe-3fdf299bac4e/m/d/nrf-352656100986572/d2c': {
     name: 'Thingy 72',
-    location: [59.437668, 10.591147],
+    location: [59.437768, 10.591286],
     ...initialValues
   }
 };

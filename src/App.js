@@ -5,11 +5,6 @@ import './App.css';
 
 const App = ({ socket }) => {
   const [data, setData] = useState(state);
-  const coordinates = {};
-  const latLongs = [
-    [59.436691, 10.594773],
-    [59.45005, 10.63509]
-  ]
   const [position, setPosition] = useState([59.436691, 10.594773]);
 
   
@@ -20,6 +15,15 @@ const App = ({ socket }) => {
     const message = JSON.parse(event.data);
     const newState = {
       ...state
+    };
+
+    if (message.appId === "AIR_PRESS") {
+      newState[message.id].location = [newState[message.id].location[0] + 0.001, newState[message.id].location[1]];
+      setPosition(newState[message.id].location);
+    }
+    else if (message.appId === "TEMP") {
+      newState[message.id].location = [newState[message.id].location[0], newState[message.id].location[1] + 0.001];
+      setPosition(newState[message.id].location);
     }
 
     let audioElement = new Audio('alertsound.mp3');
@@ -37,19 +41,18 @@ const App = ({ socket }) => {
     setData(newState)
   };
   
-  const positionClick = (event) => {
-    setPosition(coordinates[event.target.closest('a').getAttribute('href').substring(1)]);
-  }
+  const positionClick = (location) => {
+    setPosition(location);
+  };
 
   const sideBarItems = Object.values(data).map((device, index) => {
-    coordinates[device.name] = latLongs[index];
     return (
       <a
       href={`#${device.name}`}
       key={`${device.appId}-${index}`}
       className="item"
       style={{padding: "1em"}}
-      onClick={event => positionClick(event)}>
+      onClick={() => positionClick(device.location)}>
         <div className="header">{device.name}</div>
       </a>
     )

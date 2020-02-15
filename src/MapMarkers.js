@@ -24,7 +24,7 @@ const MapMarker = ({ device, position }) => {
   }
   
   return (
-    <Marker position={position} icon={icon}>
+    <Marker position={device.location} icon={icon}>
       <PopContent>
         <Line>Temperatur: {device.TEMP}</Line>
         <Line>Fuktighet: {device.HUMID}</Line>
