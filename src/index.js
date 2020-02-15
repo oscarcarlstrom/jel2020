@@ -23,7 +23,7 @@ socket.onclose = function(event) {
 };
 
 socket.onerror = function(error) {
-  console.eroor(`[ws] ${error.message}`)
+  console.error(`[ws] ${error.message}`)
 };
 
 ReactDOM.render(<App socket={socket} />, document.getElementById('root'));
