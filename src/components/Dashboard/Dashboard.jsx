@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Map from './Map/Map';
-
-const StyledDiv = styled.div`
-    font-size: 2rem;
-`;
 
 const Dashboard = ({ socket }) => {
   const [data, setData] = useState([])
