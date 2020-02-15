@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
+import { state } from './state.js'
 import Map from './Map';
 import './App.css';
-
-let state = {
-  'prod/e58215b4-ab97-41b0-8abe-3fdf299bac4e/m/d/nrf-352656100826489/d2c': {
-    name: 'Thingy 89'
-  },
-  'prod/e58215b4-ab97-41b0-8abe-3fdf299bac4e/m/d/nrf-352656100986572/d2c': {
-    name: 'Thingy 72'
-  }
-}
 
 const App = ({ socket }) => {
   const [data, setData] = useState(state);
