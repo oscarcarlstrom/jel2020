@@ -11,17 +11,17 @@ const App = ({ socket }) => {
     console.log(`[message] Data received from server: ${event.data}`);
     socket.send('Client got data');
     
-    const message = JSON.parse(event.data)
+    const message = JSON.parse(event.data);
     const newState = {
       ...state
-    }
-    newState[message.id][message.appId] = message.data
+    };
+    newState[message.id][message.appId] = message.data;
 
     setData(newState)
   };
   
   const sideBarItems = Object.values(data).map((device, index) => {
-    console.log('device', device)
+    console.log('device', device);
     return (
       <a href={`#${device.name}`} key={`${device.appId}-${index}`} className="item" style={{padding: "1em"}}>
         <div className="header">{device.name}</div>

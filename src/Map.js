@@ -19,6 +19,6 @@ const Map = ({ data }) => {
       <MapMarkers data={data} />
     </LeafletMap>
   )
-}
+};
 
 export default Map;

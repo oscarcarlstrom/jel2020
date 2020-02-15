@@ -4,12 +4,12 @@ import './index.css';
 import '../node_modules/leaflet/dist/leaflet.css'
 import App from './App';
 
-let socket = new WebSocket('ws://10.168.77.182:1880/ws/khan')
+let socket = new WebSocket('ws://10.168.77.182:1880/ws/khan');
 
 socket.onopen = function(e) {
   console.log('[open] Connection established')
   socket.send('Client is connected')
-}
+};
 
 socket.onclose = function(event) {
   if (event.wasClean) {
@@ -17,7 +17,7 @@ socket.onclose = function(event) {
   } else {
     // e.g. server process killed or network down
     // event.code is usually 1006 in this case
-    console.log('[close] Connection died')
+    console.log('[close] Connection died');
     socket.send('Client disconnected')
   }
 };
