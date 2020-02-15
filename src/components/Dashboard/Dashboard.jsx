@@ -30,16 +30,10 @@ const Dashboard = ({ socket }) => {
           <Map position={[59.436691, 10.594773]}/>
         </div>
         <div className="ui inverted vertical labeled ui overlay right visible sidebar menu three wide column" style={{padding: 0}}>
-          <div className="ui segment inverted">
-            <div className="ui items">
-              <a className="item">
-                <div className="content">
-                  <div className="header">ID: 1</div>
-                  <div className="description">Data: { data.length }</div>
-                </div>
-              </a>
-            </div>
-          </div>
+          <a className="item" style={{padding: "1em"}}>
+            <div className="header">ID: 1</div>
+            <div className="description">Data: { data.length }</div>
+          </a>
        </div>
       </div>
     </div>
