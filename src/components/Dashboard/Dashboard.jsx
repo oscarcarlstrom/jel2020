@@ -6,7 +6,7 @@ const StyledDiv = styled.div`
     font-size: 2rem;
 `;
 
-const Dashboard = props => {
+const Dashboard = ({data}) => {
     return (
 
           <div className="ui celled grid">
@@ -16,6 +16,7 @@ const Dashboard = props => {
               <div className="three wide column">
                 <div className="ui pushable">
                   <div className="ui inverted vertical labeled icon ui overlay left thin visible sidebar menu">
+                  <div className="item">Data: { data.length }</div>
                     <a className="item">
                       ID: 1
                     </a>

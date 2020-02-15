@@ -2,11 +2,10 @@ import React from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 
-function App() {
+function App({ data }) {
   return (
     <div className="App">
-      <Dashboard></Dashboard>
-      <footer></footer>
+      <Dashboard data={data}></Dashboard>
     </div>
   );
 }
