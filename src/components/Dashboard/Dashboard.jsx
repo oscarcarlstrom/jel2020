@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Map from './Map/Map';
+import styled from 'styled-components';
 
-const StyledDiv = styled.div`
-    font-size: 2rem;
+const StyledButton = styled.button`
+    width: 100%;
+    text-align: left;
 `;
 
 const Dashboard = ({ socket }) => {
@@ -13,8 +14,16 @@ const Dashboard = ({ socket }) => {
     console.log('event', event)
     console.log(`[message] Data received from server: ${event.data}`)
     socket.send('Client got data')
-    setData([...data, event.data])
+    setData([...data, JSON.parse(event.data)])
   }
+
+  const items = data.map(d => {
+    
+    return <StyledButton className="item">
+        {d.appId} : {d.data}
+    </StyledButton>
+  });
+
   return (
     <div className="ui celled grid">
       <div className="thirteen wide column">
@@ -24,15 +33,7 @@ const Dashboard = ({ socket }) => {
           <div className="ui pushable">
             <div className="ui inverted vertical labeled icon ui overlay left thin visible sidebar menu">
             <div className="item">Data: { data.length }</div>
-              <div className="item">
-                ID: 1
-              </div>
-              <div className="item">
-                ID: 2
-              </div>
-              <div className="item">
-                ID: 3
-              </div>
+              {items}
             </div>
           </div>
         </div>
