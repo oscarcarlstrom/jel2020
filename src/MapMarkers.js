@@ -30,7 +30,6 @@ const MapMarker = ({ device }) => {
         <Line>Fuktighet: {device.HUMID}</Line>
         <Line>Lufttrykk: {device.AIR_PRESS}</Line>
         <Line>Luftkvalitet: {device.AIR_QUAL}</Line>
-        <Line>Knapp: {device.BUTTON}</Line>
       </PopContent>
     </Marker>
   )
