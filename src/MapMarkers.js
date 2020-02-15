@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Marker, Popup } from 'react-leaflet';
+import Icons from './Icons';
 
 const PopContent = styled(Popup)`
   padding: 12px;
@@ -11,16 +12,28 @@ const Line = styled.p`
   margin-bottom: 8px !important;
 `;
 
-const MapMarker = ({ device, position }) => (
-  <Marker position={position}>
-    <PopContent>
-      <Line>Temperatur: {device.TEMP}</Line>
-      <Line>Fuktighet: {device.HUMID}</Line>
-      <Line>Lufttrykk: {device.AIR_PRESS}</Line>
-      <Line>Luftkvalitet: {device.AIR_QUAL}</Line>
-    </PopContent>
-  </Marker>
-);
+const MapMarker = ({ device, position }) => {
+  let icon = Icons.greenIcon;
+
+  if(device.BUTTON == 1) {
+    icon = Icons.yellowIcon;
+  }
+  
+  if (device.FLIP === "UPSIDE_DOWN") {
+    icon = Icons.redIcon;
+  }
+  
+  return (
+    <Marker position={position} icon={icon}>
+      <PopContent>
+        <Line>Temperatur: {device.TEMP}</Line>
+        <Line>Fuktighet: {device.HUMID}</Line>
+        <Line>Lufttrykk: {device.AIR_PRESS}</Line>
+        <Line>Luftkvalitet: {device.AIR_QUAL}</Line>
+      </PopContent>
+    </Marker>
+  )
+}
 
 const MapMarkers = ({ data, position }) => {
   console.log('MapMarkers got props', data);

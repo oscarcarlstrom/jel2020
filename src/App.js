@@ -14,16 +14,18 @@ const App = ({ socket }) => {
 
   
   socket.onmessage = function(event) {
-    console.log('event', event);
     console.log(`[message] Data received from server: ${event.data}`);
     socket.send('Client got data');
     
     const message = JSON.parse(event.data);
     const newState = {
       ...state
-    };
-    newState[message.id][message.appId] = message.data;
-    
+    }
+
+    if(message.appId !== "BUTTON" || (message.appId === "BUTTON" && message.data == 1)) {
+      newState[message.id][message.appId] = message.data
+    }
+
     setData(newState)
   };
   
